@@ -1,3 +1,4 @@
+// 안드로이드 플랫폼에서 kdb를 복호화 하는 기능을 구현합니다.
 package android
 
 import (
@@ -38,6 +39,8 @@ func deriveKey(userId uint64, encType uint32) []byte {
 	return key
 }
 
+// 암호화된 필드를 복호화 합니다.
+// 주의: userId에는 해당 계정의 userId가 아닌 각 데이터의 userId가 들어가야 합니다.
 func Decrypt(userId uint64, data string, encType uint32) (string, error) {
 	ciphertext, err := base64.StdEncoding.DecodeString(data)
 	if err != nil {
